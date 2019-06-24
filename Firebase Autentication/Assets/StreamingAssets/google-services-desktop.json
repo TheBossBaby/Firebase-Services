@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "839353381085",
+    "firebase_url": "https://gxp-login.firebaseio.com",
+    "project_id": "gxp-login",
+    "storage_bucket": "gxp-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839353381085:android:ec696994aaafb37f",
+        "android_client_info": {
+          "package_name": "com.andar.GameXPlayLogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839353381085-c82g80hg4p5iph00lbtgp39per2q6arm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andar.GameXPlayLogin",
+            "certificate_hash": "b184315f70065c0f020a5a9e61af4358cca6ee45"
+          }
+        },
+        {
+          "client_id": "839353381085-qsqi1lcpupf3qb72jbdvvusefbt1s9bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTvcrkcoL4Okcr0SHGyPdMJoCquL7nqDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839353381085-qsqi1lcpupf3qb72jbdvvusefbt1s9bp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "839353381085-tpqhpoheko1ooddiicogg0bqdpqjek5o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.andar.GameXPlayLogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
