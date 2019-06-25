@@ -4,11 +4,15 @@ using UnityEngine;
 using Firebase.Auth;
 
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 
 public class EmailLoginHandler : MonoBehaviour
 {
 
+    public InputField emailInputField;
+    public InputField passwordInputField;
     private string email = "test2@gmail.com";
     private string password = "qwErty@123";
 
@@ -35,12 +39,10 @@ public class EmailLoginHandler : MonoBehaviour
 
         // Firebase user has been created.
         Firebase.Auth.FirebaseUser newUser = task.Result;
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);        
         Debug.LogFormat("Firebase user created successfully: {0} ({1})",
             newUser.DisplayName, newUser.UserId);
         });
-
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
-
     }
 
     public void SignInClick()
@@ -56,9 +58,20 @@ public class EmailLoginHandler : MonoBehaviour
         }
 
         Firebase.Auth.FirebaseUser newUser = task.Result;
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+
         Debug.LogFormat("User signed in successfully: {0} ({1})",
             newUser.DisplayName, newUser.UserId);
         });
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+    }
+
+    public void TakeEmailInput()
+    {
+        email = emailInputField.text;
+    }
+
+    public void TakePasswordInput()
+    {
+        password = passwordInputField.text;
     }
 }

@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "839353381085-c82g80hg4p5iph00lbtgp39per2q6arm.apps.googleusercontent.com",
+          "client_id": "839353381085-5mm57o7c893f3dimsras2efk694s131i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.andar.GameXPlayLogin",
-            "certificate_hash": "b184315f70065c0f020a5a9e61af4358cca6ee45"
+            "certificate_hash": "0d8ad04108cddf04479dd3a969913cb4397fd0ca"
           }
         },
         {

@@ -12,8 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class facebookLoginHandler : MonoBehaviour
 {
-
-    public Text name;
+   public Text name;
 	Firebase.Auth.FirebaseAuth auth;
     Firebase.Auth.FirebaseUser user;
 
@@ -33,6 +32,7 @@ public class facebookLoginHandler : MonoBehaviour
 
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 	}
+	
     public void FacebookSignIn_Click()
 	{
 		OnFacebookSignIn();
@@ -100,6 +100,7 @@ public class facebookLoginHandler : MonoBehaviour
 	}
 
 	private void OnHideUnity(bool isGameShown)
+ 
 	{
 		if (!isGameShown)
 		{
