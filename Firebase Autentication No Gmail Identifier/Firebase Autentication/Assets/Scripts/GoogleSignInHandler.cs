@@ -18,7 +18,9 @@ public class GoogleSignInHandler : MonoBehaviour
 	public string webClientId = "839353381085-qsqi1lcpupf3qb72jbdvvusefbt1s9bp.apps.googleusercontent.com";
 	private GoogleSignInConfiguration configuration;
 
-   public Text name;
+	public GameObject onLogedIn;
+	public GameObject ErrorPanel;
+	public Text ErrorMessage;
 	Firebase.Auth.FirebaseAuth auth;
     Firebase.Auth.FirebaseUser user;
 
@@ -41,6 +43,13 @@ public class GoogleSignInHandler : MonoBehaviour
 	{
 		//Sign-In with Google as first to get token for Firebase Auth
 		OnGoogleSignIn();
+	}
+
+	public void GoofleSignOut_Click()
+	{
+		auth.SignOut();
+		GoogleSignIn.DefaultInstance.SignOut ();
+		onLogedIn.SetActive(false);		
 	}
 
 	void OnGoogleSignIn()
@@ -66,6 +75,8 @@ public class GoogleSignInHandler : MonoBehaviour
 					GoogleSignIn.SignInException error =
 							(GoogleSignIn.SignInException)enumerator.Current;
 					UnityEngine.Debug.Log("Got Error: " + error);
+					ErrorPanel.SetActive(true);
+					// ErrorMessage.text = (string)error;
 				}
 				else
 				{
@@ -83,6 +94,7 @@ public class GoogleSignInHandler : MonoBehaviour
 
 			UnityEngine.Debug.Log("IdToken: " +task.Result.IdToken);
 			UnityEngine.Debug.Log("ImageUrl: " + task.Result.ImageUrl.AbsoluteUrlOrEmptyString());
+			UnityEngine.Debug.Log("Email: " + task.Result.Email);
 
 			//Start Firebase Auth
 			Firebase.Auth.Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(task.Result.IdToken, null);
@@ -100,8 +112,10 @@ public class GoogleSignInHandler : MonoBehaviour
 				}
 
 				user = auth.CurrentUser;
-                SceneManager.LoadScene("Game", LoadSceneMode.Single);
-
+				UnityEngine.Debug.Log("Email: " + user.Email);
+								
+                // SceneManager.LoadScene("Game", LoadSceneMode.Single);
+				onLogedIn.SetActive(true);
 			});
 		}
 	}

@@ -12,7 +12,10 @@ using UnityEngine.SceneManagement;
 
 public class facebookLoginHandler : MonoBehaviour
 {
-   public Text name;
+   	public GameObject onLogedIn;
+	public GameObject ErrorPanel;
+	public Text ErrorMessage;
+
 	Firebase.Auth.FirebaseAuth auth;
     Firebase.Auth.FirebaseUser user;
 
@@ -38,6 +41,12 @@ public class facebookLoginHandler : MonoBehaviour
 		OnFacebookSignIn();
 	}
 
+	public void FacebookLogOut_Click()
+	{
+		auth.SignOut();
+		FB.LogOut();
+		onLogedIn.SetActive(false);
+	}
 	void OnFacebookSignIn()
 	{
 		FB.LogInWithReadPermissions(new List<string>() { "public_profile", "email" }, OnFacebookAuthenticationFinished);
@@ -66,20 +75,25 @@ public class facebookLoginHandler : MonoBehaviour
 			if (task.IsCanceled)
 			{
 				Debug.Log("SignInWithCredentialAsync was canceled.");
+				onLogedIn.SetActive(false);
 				return;
 			}
 			if (task.IsFaulted)
 			{
 				Debug.Log("SignInWithCredentialAsync encountered an error: ");
+				onLogedIn.SetActive(false);	
+				ErrorPanel.SetActive(true);
 				return;
 			}
 
 			user = auth.CurrentUser;
 
-            name.text = user.DisplayName;
 
-            SceneManager.LoadScene("Game", LoadSceneMode.Single);
-	
+			// Load another Scene
+            // SceneManager.LoadScene("Game", LoadSceneMode.Single);
+
+			onLogedIn.SetActive(true);
+
     		Debug.Log(string.Format("User signed in successfully: {0} ({1})",
 				user.DisplayName, user.UserId));
 		});
@@ -91,10 +105,12 @@ public class facebookLoginHandler : MonoBehaviour
 
 		if (FB.IsLoggedIn)
 		{
-            SceneManager.LoadScene("Game", LoadSceneMode.Single);
+            // SceneManager.LoadScene("Game", LoadSceneMode.Single);
+			// onLogedIn.SetActive(true);
 		}
 		else
 		{
+			onLogedIn.SetActive(false);	
 			Debug.Log("User cancelled login");
 		}
 	}
